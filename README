@@ -1,0 +1,19 @@
+About
+======
+Keep all modifications as one RUN command, this will cause docker to only
+do one layer for all modifications, but keep the original ubuntu image
+as one layer. This is the recomended way to flattern docker images.
+
+Build
+=======
+docker build --rm -t <user>/weos-toolchain .
+
+Tagging
+=======
+Never use the tag *latest* in production, always do a new tag:
+docker tag <user>/weos-toolchain:10.0
+
+Push to dockerhub
+=================
+docker push <user>/weos-toolchain
+docker push <user>/weos-toolchain:10.0
