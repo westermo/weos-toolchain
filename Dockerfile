@@ -1,4 +1,4 @@
- FROM ubuntu:16.04.3
+ FROM ubuntu:xenial
  MAINTAINER mattias.walstrom@westermo.se
  RUN apt-get update && \
      apt-get -y install wget bash && \
