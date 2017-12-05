@@ -13,7 +13,6 @@
      echo "ALL	ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers && \
      echo "Defaults !env_reset" >> /etc/sudoers
  RUN echo "nameserver 192.168.130.100" > /etc/resolv.conf && apt-get -y install wmo-mgmt-guide-essential
- RUN apt-get install bash-completion
  RUN apt-get -y install bash-completion && \
      sed -i '/^#if !.*$/,/^#fi$/s/#//g' /etc/bash.bashrc
- RUN apt-get install -y bear
+ RUN apt-get install -y bear qemu kpartx grub2
