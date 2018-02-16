@@ -16,3 +16,4 @@
  RUN apt-get -y install bash-completion && \
      sed -i '/^#if !.*$/,/^#fi$/s/#//g' /etc/bash.bashrc
  RUN apt-get install -y bear qemu kpartx grub2
+ RUN apt-get install -y libssl-dev

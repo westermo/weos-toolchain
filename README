@@ -6,14 +6,14 @@ as one layer. This is the recomended way to flattern docker images.
 
 Build
 =======
-docker build --rm -t <user>/weos-toolchain .
+docker build --rm -t dockerregistry.westermo.com:443/weos-toolchain .
 
 Tagging
 =======
 Never use the tag *latest* in production, always do a new tag:
-docker tag <user>/weos-toolchain:10.0
+docker tag  dockerregistry.westermo.com:443/weos-toolchain:10.0
 
 Push to dockerhub
 =================
-docker push <user>/weos-toolchain
-docker push <user>/weos-toolchain:10.0
+docker push dockerregistry.westermo.com:443/weos-toolchain
+docker push dockerregistry.westermo.com:443/weos-toolchain:10.0
