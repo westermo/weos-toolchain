@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Add a user called bob (the builder), which matches the uid/gid of
+# the host user. This means that all files created in the container
+# will be owned by the user who ran us. Default to 1000:1000 since
+# that is what many distributions use as the first user's uid:gid.
+uid="-u ${HOST_USER:-1000}"
+gid="-g ${HOST_GROUP:-1000}"
+
+groupadd ${gid} bob
+ useradd ${gid} ${uid} -s /bin/bash bob
+
+# Manually create home directory to avoid polluting it with stuff from
+# /etc/skel.
+mkdir -p      /home/bob
+chown bob:bob /home/bob
+
+# Figure out what to run. Without arguments we will exec "sudo -s"
+# i.e. an interactive shell. Otherwise run whatever is in our argv.
+if [ $# -ge 1 ]; then
+    cmd=${1}
+    shift
+else
+    cmd="-s"
+fi
+
+# We're running sudo without reseting the environment, and we don't
+# want HOME=/root.
+HOME=/home/bob
+
+exec sudo -u bob ${cmd} "${@}"
