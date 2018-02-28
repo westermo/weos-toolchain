@@ -2,11 +2,12 @@ About
 ======
 Keep all modifications as one RUN command, this will cause docker to only
 do one layer for all modifications, but keep the original ubuntu image
-as one layer. This is the recomended way to flattern docker images.
+as one layer. This is the recommended way to flatten docker images.
 
 Build
 =======
-docker build --rm -t dockerregistry.westermo.com:443/weos-toolchain .
+make all   - Build all docker images.
+make <dir> - Build the Dockerfile in <dir>/.
 
 Tagging
 =======
